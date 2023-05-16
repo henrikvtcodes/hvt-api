@@ -1,4 +1,4 @@
-import { Directive, Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 
 export enum LiveStreamPlatform {
   YOUTUBE = "youtube",
@@ -13,7 +13,10 @@ registerEnumType(LiveStreamPlatform, {
 
 @ObjectType({ description: 'Instance of a Live Stream' })
 export class LiveStream {
-  @Field(type => LiveStreamPlatform)
+  @Field(_type => ID)
+  streamId: string;
+
+  @Field(_type => LiveStreamPlatform)
   platform: LiveStreamPlatform;
 
   @Field()
