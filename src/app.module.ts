@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { LiveModule } from './live/live.module';
+import { XKCDModule } from './xkcd/xkcd.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { LiveModule } from './live/live.module';
       autoSchemaFile: join(process.cwd(), 'src/autoSchema.gql'),
       playground: env.GRAPHIQL,
     }),
-    LiveModule
+    LiveModule,
+    XKCDModule
   ],
   controllers: [AppController],
   providers: [AppService],
