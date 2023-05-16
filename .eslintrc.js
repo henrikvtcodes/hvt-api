@@ -19,4 +19,19 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
+  overrides: [
+    // Write an override that uses Regex to ignore the unused variables rule for decorators
+    {
+      files: ['*.ts'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+          },
+        ],
+      },
+    },
+  ]
 };
